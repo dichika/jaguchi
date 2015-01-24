@@ -49,19 +49,28 @@ jaguchi.yfj <- function(x, code, start_date, end_date){
 }
 
 #' @export
+jaguchi.niconico <- function(x, ids){
+  require(niconico)
+  res <- getInfo(ids)
+  return(res)
+}
+
+
+#' @export
 sorry <- function(x){
   cat(sprintf("\nSorry, there is no jaguchi for %s...", x))
 }
 
 #' @export
 checkPkg <- function(x){
-  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj")
-  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ")
+  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconico")
+  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico")
   urls <- c("dichika/slideshare",
             "dichika/speakerdeck",
             "dichika/hatenab",
             "dichika/sinchokur",
-            "teramonagi/RFinanceJ"
+            "teramonagi/RFinanceJ",
+            "dichika/niconico"
   )
   
   trg_package <- pkgnames[match(x, lists)]
