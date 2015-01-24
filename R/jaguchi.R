@@ -20,15 +20,24 @@ jaguchi.speakerdeck <- function(x, url){
   return(res)
 }
 
+#' @export
+jaguchi.hatenab <- function(x, url){
+  require(hatenab)
+  res <- getBookmarkCount(url)
+  return(res)
+}
+
 sorry <- function(x){
   cat(sprintf("\nSorry, there is no jaguchi for %s...", x))
 }
 
 checkPkg <- function(x){
-  lists <- c("slideshare", "speakerdeck")
-  pkgnames <- c("slideshare", "speakerdeck")
+  lists <- c("slideshare", "speakerdeck","hatenab")
+  pkgnames <- c("slideshare", "speakerdeck","hatenab")
   urls <- c("http://github.com/dichika/slideshare",
-            "http://github.com/dichika/speakerdeck")
+            "http://github.com/dichika/speakerdeck",
+            "http://github.com/dichika/hatenab"
+            )
   
   trg_package <- pkgnames[match(x, lists)]
   trg_url <- urls[match(x, lists)]
