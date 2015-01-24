@@ -49,9 +49,16 @@ jaguchi.yfj <- function(x, code, start_date, end_date){
 }
 
 #' @export
-jaguchi.niconico <- function(x, ids){
+jaguchi.niconicoi <- function(x, ids){
   require(niconico)
   res <- getInfo(ids)
+  return(res)
+}
+
+#' @export
+jaguchi.niconicos <- function(x, query, size, type=c("word","tag")){
+  require(niconico)
+  res <- getSearch(query, size, type)
   return(res)
 }
 
@@ -63,13 +70,14 @@ sorry <- function(x){
 
 #' @export
 checkPkg <- function(x){
-  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconico")
-  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico")
+  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos")
+  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico")
   urls <- c("dichika/slideshare",
             "dichika/speakerdeck",
             "dichika/hatenab",
             "dichika/sinchokur",
             "teramonagi/RFinanceJ",
+            "dichika/niconico",
             "dichika/niconico"
   )
   
