@@ -1,8 +1,9 @@
 #' @export
 jaguchi <- function(apiname, ...){
-  checkPkg(apiname)
+  jaguchi::checkPkg(apiname)
   class(apiname) <- apiname
-  UseMethod("jaguchi", apiname)
+  res <- UseMethod("jaguchi", apiname)
+  return(res)
 }
 
 #' @export
@@ -43,13 +44,16 @@ jaguchi.yfj <- function(x, code, start_date, end_date){
                    end_date=end_date,
                    frequency="daily",
                    src="yahoo")
+  res <- as.data.frame(res, stringsAsFactors=FALSE)
   return(res)
 }
 
+#' @export
 sorry <- function(x){
   cat(sprintf("\nSorry, there is no jaguchi for %s...", x))
 }
 
+#' @export
 checkPkg <- function(x){
   lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj")
   pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ")
