@@ -34,17 +34,30 @@ jaguchi.sinchokur <- function(x, username){
   return(res)
 }
 
+#' @export
+jaguchi.yfj <- function(x, code, start_date, end_date){
+  require(RFinanceJ)
+  res <- rfinancej(code=code,
+                   type="data.frame",
+                   start_date=start_date,
+                   end_date=end_date,
+                   frequency="daily",
+                   src="yahoo")
+  return(res)
+}
+
 sorry <- function(x){
   cat(sprintf("\nSorry, there is no jaguchi for %s...", x))
 }
 
 checkPkg <- function(x){
-  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur")
-  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur")
-  urls <- c("http://github.com/dichika/slideshare",
-            "http://github.com/dichika/speakerdeck",
-            "http://github.com/dichika/hatenab",
-            "http://github.com/dichika/sinchokur"
+  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj")
+  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ")
+  urls <- c("dichika/slideshare",
+            "dichika/speakerdeck",
+            "dichika/hatenab",
+            "dichika/sinchokur",
+            "teramonagi/RFinanceJ"
   )
   
   trg_package <- pkgnames[match(x, lists)]
@@ -54,6 +67,6 @@ checkPkg <- function(x){
   }
   try(good <- find.package(trg_package, quiet=TRUE))
   if(length(good)==0){
-    stop(sprintf("\nPlease install '%s'\ncheck %s", trg_package, trg_url))
+    stop(sprintf("\nPlease install '%s'\ntry devtools::install_github('%s')", trg_package, trg_url))
   }
 }
