@@ -62,6 +62,13 @@ jaguchi.niconicos <- function(x, query, size, type=c("word","tag")){
   return(res)
 }
 
+#' @export
+jaguchi.pixiv <- function(x, query){
+  require(pixiv)
+  res <- getSearch(query)
+  return(res)
+}
+
 
 #' @export
 sorry <- function(x){
@@ -70,15 +77,18 @@ sorry <- function(x){
 
 #' @export
 checkPkg <- function(x){
-  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos")
-  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico")
+  lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos",
+             "pixiv")
+  pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico",
+                "pixiv")
   urls <- c("dichika/slideshare",
             "dichika/speakerdeck",
             "dichika/hatenab",
             "dichika/sinchokur",
             "teramonagi/RFinanceJ",
             "dichika/niconico",
-            "dichika/niconico"
+            "dichika/niconico",
+            "dichika/pixiv"
   )
   
   trg_package <- pkgnames[match(x, lists)]

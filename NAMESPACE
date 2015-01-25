@@ -3,6 +3,7 @@
 S3method(jaguchi,hatenab)
 S3method(jaguchi,niconicoi)
 S3method(jaguchi,niconicos)
+S3method(jaguchi,pixiv)
 S3method(jaguchi,sinchokur)
 S3method(jaguchi,slideshare)
 S3method(jaguchi,speakerdeck)
