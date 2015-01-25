@@ -17,7 +17,7 @@ jaguchi.slideshare <- function(x,url,key,secret){
 #' @export
 jaguchi.speakerdeck <- function(x, url){
   require(speakerdeck)
-  res <- getInfo(url)
+  res <- speakerdeck::getInfo(url)
   return(res)
 }
 
@@ -51,14 +51,14 @@ jaguchi.yfj <- function(x, code, start_date, end_date){
 #' @export
 jaguchi.niconicoi <- function(x, ids){
   require(niconico)
-  res <- getInfo(ids)
+  res <- niconico::getInfo(ids)
   return(res)
 }
 
 #' @export
 jaguchi.niconicos <- function(x, query, size, type=c("word","tag")){
   require(niconico)
-  res <- getSearch(query, size, type)
+  res <- niconico::getSearch(query, size, type)
   return(res)
 }
 
