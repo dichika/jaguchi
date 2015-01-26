@@ -1,13 +1,15 @@
 #' @export
-jaguchi <- function(apiname, ...){
-  jaguchi::checkPkg(apiname)
+jaguchi <- function(apiname, pkgcheck=TRUE, ...){
+  if(pkgcheck){
+    jaguchi::checkPkg(apiname)    
+  }
   class(apiname) <- apiname
   res <- UseMethod("jaguchi", apiname)
   return(res)
 }
 
 #' @export
-jaguchi.slideshare <- function(x,url,key,secret){
+jaguchi.slideshare <- function(x,url,key,secret, ...){
   require(slideshare)
   test <- Slideshare$new(apikey=key,sharedsecret=secret)
   res <- test$getSlideshow(url)
@@ -15,28 +17,28 @@ jaguchi.slideshare <- function(x,url,key,secret){
 }
 
 #' @export
-jaguchi.speakerdeck <- function(x, url){
+jaguchi.speakerdeck <- function(x, url, ...){
   require(speakerdeck)
   res <- speakerdeck::getInfo(url)
   return(res)
 }
 
 #' @export
-jaguchi.hatenab <- function(x, url){
+jaguchi.hatenab <- function(x, url, ...){
   require(hatenab)
   res <- getBookmarkCount(url)
   return(res)
 }
 
 #' @export
-jaguchi.sinchokur <- function(x, username){
+jaguchi.sinchokur <- function(x, username, ...){
   require(sinchokur)
   res <- getPubContribution(username)
   return(res)
 }
 
 #' @export
-jaguchi.yfj <- function(x, code, start_date, end_date){
+jaguchi.yfj <- function(x, code, start_date, end_date, ...){
   require(RFinanceJ)
   res <- rfinancej(code=code,
                    type="data.frame",
@@ -49,21 +51,21 @@ jaguchi.yfj <- function(x, code, start_date, end_date){
 }
 
 #' @export
-jaguchi.niconicoi <- function(x, ids){
+jaguchi.niconicoi <- function(x, ids, ...){
   require(niconico)
   res <- niconico::getInfo(ids)
   return(res)
 }
 
 #' @export
-jaguchi.niconicos <- function(x, query, size, type=c("word","tag")){
+jaguchi.niconicos <- function(x, query, size, type=c("word","tag"), ...){
   require(niconico)
   res <- niconico::getSearch(query, size, type)
   return(res)
 }
 
 #' @export
-jaguchi.pixiv <- function(x, query){
+jaguchi.pixiv <- function(x, query, ...){
   require(pixiv)
   res <- getSearch(query)
   return(res)
