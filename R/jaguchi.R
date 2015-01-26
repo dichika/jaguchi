@@ -67,7 +67,7 @@ jaguchi.niconicos <- function(x, query, size, type=c("word","tag"), ...){
 #' @export
 jaguchi.pixiv <- function(x, query, ...){
   require(pixiv)
-  res <- getSearch(query)
+  res <- pixiv::getSearch(query)
   return(res)
 }
 
