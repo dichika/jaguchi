@@ -71,6 +71,19 @@ jaguchi.pixiv <- function(x, query, ...){
   return(res)
 }
 
+#' @export
+jaguchi.connpass <- function(x, event_id, ...){
+  require(connpass)
+  res <- connpass::getInfo(event_id)
+  return(res)
+}
+
+#' @export
+jaguchi.brewdata <- function(x, years=2015, term="F", degree="phd", focus="statistics", resolution=10, ...){
+  require(brewdata)
+  res <- brewdata::brewdata(years=years, term=term, degree=degree, focus=focus, resolution=resolution)
+  return(res)
+}
 
 #' @export
 sorry <- function(x){
@@ -80,17 +93,19 @@ sorry <- function(x){
 #' @export
 checkPkg <- function(x){
   lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos",
-             "pixiv")
+             "pixiv", "connpass","brewdata")
   pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico",
-                "pixiv")
-  urls <- c("dichika/slideshare",
-            "dichika/speakerdeck",
-            "dichika/hatenab",
-            "dichika/sinchokur",
-            "teramonagi/RFinanceJ",
-            "dichika/niconico",
-            "dichika/niconico",
-            "dichika/pixiv"
+                "pixiv", "connpass","brewdata")
+  urls <- c('devtools::install_github("dichika/slideshare")',
+            'devtools::install_github("dichika/speakerdeck")',
+            'devtools::install_github("dichika/hatenab")',
+            'devtools::install_github("dichika/sinchokur")',
+            'devtools::install_github("teramonagi/RFinanceJ")',
+            'devtools::install_github("dichika/niconico")',
+            'devtools::install_github("dichika/niconico")',
+            'devtools::install_github("dichika/pixiv")',
+            'devtools::install_github("dichika/connpass")',
+            'install.packages("brewdata")'
   )
   
   trg_package <- pkgnames[match(x, lists)]
@@ -100,6 +115,6 @@ checkPkg <- function(x){
   }
   try(good <- find.package(trg_package, quiet=TRUE))
   if(length(good)==0){
-    stop(sprintf("\nPlease install '%s'\ntry devtools::install_github('%s')", trg_package, trg_url))
+    stop(sprintf("\nPlease install '%s'\ntry %s)", trg_package, trg_url))
   }
 }
