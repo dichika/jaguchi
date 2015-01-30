@@ -86,6 +86,14 @@ jaguchi.brewdata <- function(x, years=2015, term="F", degree="phd", focus="stati
 }
 
 #' @export
+jaguchi.nhk <- function(x, login_id, password, ...){
+  require(NHKG)
+  res <- getSinchokuGogaku(options()$NHK_G_ID,options()$NHK_G_PWD)
+  return(res)
+}
+
+
+#' @export
 sorry <- function(x){
   cat(sprintf("\nSorry, there is no jaguchi for %s...", x))
 }
@@ -93,9 +101,9 @@ sorry <- function(x){
 #' @export
 checkPkg <- function(x){
   lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos",
-             "pixiv", "connpass","brewdata")
+             "pixiv", "connpass","brewdata","nhk")
   pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico",
-                "pixiv", "connpass","brewdata")
+                "pixiv", "connpass","brewdata","NHKG")
   urls <- c('devtools::install_github("dichika/slideshare")',
             'devtools::install_github("dichika/speakerdeck")',
             'devtools::install_github("dichika/hatenab")',
@@ -105,7 +113,8 @@ checkPkg <- function(x){
             'devtools::install_github("dichika/niconico")',
             'devtools::install_github("dichika/pixiv")',
             'devtools::install_github("dichika/connpass")',
-            'install.packages("brewdata")'
+            'install.packages("brewdata")',
+            'devtools::install_github("dichika/NHKG")'
   )
   
   trg_package <- pkgnames[match(x, lists)]
