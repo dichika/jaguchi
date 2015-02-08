@@ -1,9 +1,9 @@
 Package: jaguchi
 Type: Package
 Title: jaguchi for webAPI
-Version: 0.1.2
-Date: 2015-01-24
+Version: 0.2
+Date: 2015-02-08
 Author: dichika
 Description: jaguchi for webAPI
 License: MIT
-Imports: brewdata
+Imports: brewdata, RCurl
