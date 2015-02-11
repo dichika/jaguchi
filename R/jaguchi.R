@@ -100,6 +100,13 @@ jaguchi.ore <- function(x, ...){
   return(res)
 }
 
+#' @export
+jaguchi.myroom <- function(x, ...){
+  require("RCurl")
+  u <- getURL("https://raw.githubusercontent.com/dichika/jaguchi/master/inst/data/room.csv")
+  res <- read.csv(text=u, as.is=TRUE)
+  return(res)
+}
 
 #' @export
 sorry <- function(x){
@@ -109,9 +116,9 @@ sorry <- function(x){
 #' @export
 checkPkg <- function(x){
   lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos",
-             "pixiv", "connpass","brewdata","nhk","ore")
+             "pixiv", "connpass","brewdata","nhk","ore","myroom")
   pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico",
-                "pixiv", "connpass","brewdata","NHKG","RCurl")
+                "pixiv", "connpass","brewdata","NHKG","RCurl","RCurl")
   urls <- c('devtools::install_github("dichika/slideshare")',
             'devtools::install_github("dichika/speakerdeck")',
             'devtools::install_github("dichika/hatenab")',
@@ -123,6 +130,7 @@ checkPkg <- function(x){
             'devtools::install_github("dichika/connpass")',
             'install.packages("brewdata")',
             'devtools::install_github("dichika/NHKG")',
+            'install.packages("RCurl")',
             'install.packages("RCurl")'
   )
   

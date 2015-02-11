@@ -3,6 +3,7 @@
 S3method(jaguchi,brewdata)
 S3method(jaguchi,connpass)
 S3method(jaguchi,hatenab)
+S3method(jaguchi,myroom)
 S3method(jaguchi,nhk)
 S3method(jaguchi,niconicoi)
 S3method(jaguchi,niconicos)
