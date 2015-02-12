@@ -103,7 +103,7 @@ jaguchi.ore <- function(x, ...){
 #' @export
 jaguchi.myroom <- function(x, ...){
   require("RCurl")
-  u <- getURL("https://raw.githubusercontent.com/dichika/jaguchi/master/inst/data/room.csv")
+  u <- getURL("https://raw.githubusercontent.com/dichika/mydata/master/room.csv")
   res <- read.csv(text=u, as.is=TRUE)
   return(res)
 }
