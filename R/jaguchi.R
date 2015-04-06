@@ -95,7 +95,8 @@ jaguchi.nhk <- function(x, login_id, password, ...){
 #' @export
 jaguchi.ore <- function(x, ...){
   require("RCurl")
-  u <- getURL("https://raw.githubusercontent.com/dichika/jaguchi/master/inst/data/ore.csv")
+  #u <- getURL("https://raw.githubusercontent.com/dichika/jaguchi/master/inst/data/ore.csv")
+  u <- getURL("https://raw.githubusercontent.com/dichika/mydata/master/ore.csv")
   res <- read.csv(text=u, as.is=TRUE)
   return(res)
 }
