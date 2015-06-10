@@ -70,9 +70,3 @@ jaguchi("niconicoi", ids="nm25386207")
 jaguchi("niconicos", query="艦これ", size=100, type="tag")
 ```
 
-### pixivイラスト検索API（非公式）を利用して情報を取得する
-pixivイラスト検索API（非公式）を利用しています。
-
-```r
-jaguchi("pixiv", query="艦これ")
-```
