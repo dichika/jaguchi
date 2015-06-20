@@ -117,6 +117,14 @@ jaguchi.ore_weight <- function(x, ...){
 }
 
 #' @export
+jaguchi.siero <- function(x, ...){
+  require("RCurl")
+  u <- getURL("https://gist.githubusercontent.com/siero5335/c7323407efb2b0b20b55/raw/14a0c3aa86814317fa4371d280738869779f08da/metabolo_test.csv")
+  res <- read.csv(text=u, as.is=TRUE)
+  return(res)
+}
+
+#' @export
 sorry <- function(x){
   cat(sprintf("\nSorry, there is no jaguchi for %s...", x))
 }
@@ -124,9 +132,9 @@ sorry <- function(x){
 #' @export
 checkPkg <- function(x){
   lists <- c("slideshare", "speakerdeck","hatenab","sinchokur","yfj","niconicoi","niconicos",
-             "pixiv", "connpass","brewdata","nhk","ore","myroom","ore_weight")
+             "pixiv", "connpass","brewdata","nhk","ore","myroom","ore_weight","siero")
   pkgnames <- c("slideshare", "speakerdeck","hatenab","sinchokur","RFinanceJ","niconico","niconico",
-                "pixiv", "connpass","brewdata","NHKG","RCurl","RCurl","RCurl")
+                "pixiv", "connpass","brewdata","NHKG","RCurl","RCurl","RCurl","RCurl")
   urls <- c('devtools::install_github("dichika/slideshare")',
             'devtools::install_github("dichika/speakerdeck")',
             'devtools::install_github("dichika/hatenab")',
@@ -138,6 +146,7 @@ checkPkg <- function(x){
             'devtools::install_github("dichika/connpass")',
             'install.packages("brewdata")',
             'devtools::install_github("dichika/NHKG")',
+            'install.packages("RCurl")',
             'install.packages("RCurl")',
             'install.packages("RCurl")',
             'install.packages("RCurl")'
